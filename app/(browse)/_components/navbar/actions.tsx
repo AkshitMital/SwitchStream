@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { SignInButton, UserButton, currentUser } from "@clerk/nextjs";
 import { Clapperboard } from "lucide-react";
 import Link from "next/link";
@@ -30,6 +31,15 @@ export const Actions = async () => {
           <UserButton afterSignOutUrl="/" />
         </div>
       )}
+    </div>
+  );
+};
+
+export const UserButtonSkeleton = () => {
+  return (
+    <div className="flex items-center gap-x-4">
+      <Skeleton className="w-48 h-48 rounded-md" />
+      <Skeleton className="h-24 w-80" />
     </div>
   );
 };
