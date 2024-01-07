@@ -22,7 +22,8 @@ export const ChatMessage = ({ data }: ChatMessageProps) => {
                         style={{ color: color }}
                     >
                         {data.from?.name}
-                    </span>
+                    </span>{" "}
+                    :
                 </p>
                 <p className="text-sm break-all">{data.message}</p>
             </div>
