@@ -15,6 +15,10 @@ interface InfoCardProps {
 export const InfoCard = ({ hostIdentity, viewerIdentity, name, thumbnailUrl }: InfoCardProps) => {
     const hostAsViewer = `host-${hostIdentity}`;
     const isHost = viewerIdentity === hostAsViewer;
+
+    if (!isHost) {
+        return null;
+    }
     return (
         <div className="px-4">
             <div className="rounded-xl bg-background">

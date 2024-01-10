@@ -1,10 +1,12 @@
 "use client";
 
-import { useSidebar } from "@/store/use-sidebar";
 import { Follow, User } from "@prisma/client";
+
+import { useSidebar } from "@/store/use-sidebar";
+
 import { UserItem, UserItemSkeleton } from "./user-item";
 
-interface followingProps {
+interface FollowingProps {
     data: (Follow & {
         following: User & {
             stream: { isLive: boolean } | null;
@@ -12,12 +14,13 @@ interface followingProps {
     })[];
 }
 
-export const Following = ({ data }: followingProps) => {
+export const Following = ({ data }: FollowingProps) => {
     const { collapsed } = useSidebar(state => state);
 
     if (!data.length) {
         return null;
     }
+
     return (
         <div>
             {!collapsed && (
@@ -41,7 +44,7 @@ export const Following = ({ data }: followingProps) => {
 
 export const FollowingSkeleton = () => {
     return (
-        <ul className="px-2">
+        <ul className="px-2 pt-2 lg:pt-0">
             {[...Array(3)].map((_, i) => (
                 <UserItemSkeleton key={i} />
             ))}
